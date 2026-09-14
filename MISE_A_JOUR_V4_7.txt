@@ -1,0 +1,24 @@
+MES MENUS V4.7 — FONCTIONS COMPLÈTES
+
+Nouveautés :
+1. Dates réelles + Jour X/N calculés depuis la date de démarrage.
+2. Historique poids / masse grasse + graphique local.
+3. Liste de courses générée automatiquement depuis les 7 menus de la semaine.
+4. Bouton Changer ce repas + retour à l'original.
+5. Favoris.
+6. Mode Mon programme / Consultation : le mode Consultation masque le suivi personnel et les boutons d'édition.
+7. Bilan de fin des 12 semaines + génération locale d'un cycle complémentaire S13 à S16.
+8. Petit-déjeuner non affiché.
+9. Visuel photoréaliste V4.6 conservé.
+
+IMPORTANT :
+- Les données de suivi/favoris sont stockées uniquement dans le navigateur de l'appareil utilisé.
+- Le mode Consultation est une présentation en lecture seule ; ce n'est pas une authentification par mot de passe.
+- Le cycle complémentaire réutilise les repas existants et favoris ; il ne modifie pas automatiquement les quantités prescrites.
+
+INSTALLATION :
+1. Décompresser l'archive.
+2. Dans web/mes-menus, remplacer TOUS les fichiers et le dossier assets.
+3. Sur PC : ouvrir http://100.114.52.41/mes-menus/?v=47
+4. Faire Ctrl+Shift+R une fois.
+5. Sur iPhone : actualiser une fois dans Safari puis relancer l'icône Mes Menus.

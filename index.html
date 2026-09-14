@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11804e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mes Menus">
+<title>Mes Menus V4.7</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css?v=5.6">
+</head>
+<body>
+<main class="app">
+<header class="top">
+  <div class="brand">
+    <span>🌿</span>
+    <div><b>Mes Menus</b><small id="programSubtitle">12 semaines • 84 jours</small></div>
+    <span class="heart">♥</span>
+  </div>
+  <div class="mode-switch">
+    <button id="ownerMode" class="on">👤 Mon programme</button>
+    <button id="viewerMode">👥 Consultation</button>
+  </div>
+  <div id="weekTabs" class="weeks"></div>
+</header>
+
+<section id="menus" class="view active">
+  <div class="daynav">
+    <button id="prev">‹</button>
+    <div>
+      <h1 id="dayTitle">Lundi</h1>
+      <p id="dateTitle"></p>
+      <p id="weekTitle">Semaine 1</p>
+    </div>
+    <button id="next">›</button>
+  </div>
+
+  <article class="meal lunch">
+    <div class="photo"><img id="lunchImg" alt="Déjeuner"><span id="lunchPhotoLabel"></span></div>
+    <div class="mealbody">
+      <div class="meal-title-row"><h2>🍴 Déjeuner</h2><button id="favLunch" class="icon-btn owner-only" aria-label="Favori">♡</button></div>
+      <p id="lunchText"></p>
+      <div class="meal-actions owner-only">
+        <button id="changeLunch">🔄 Changer ce repas</button>
+        <button id="resetLunch">↩ Original</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="meal dinner">
+    <div class="photo"><img id="dinnerImg" alt="Dîner"><span id="dinnerPhotoLabel"></span></div>
+    <div class="mealbody">
+      <div class="meal-title-row"><h2>🌙 Dîner</h2><button id="favDinner" class="icon-btn owner-only" aria-label="Favori">♡</button></div>
+      <p id="dinnerText"></p>
+      <div class="meal-actions owner-only">
+        <button id="changeDinner">🔄 Changer ce repas</button>
+        <button id="resetDinner">↩ Original</button>
+      </div>
+    </div>
+  </article>
+
+  <div class="week-print owner-only">
+    <button id="printWeek" class="primary">🖨️ Imprimer les recettes de la semaine</button>
+  </div>
+
+  <aside class="daily-tip">🌿 <b>Conseil du jour :</b> mangez lentement et prenez le temps de savourer votre repas.</aside>
+  <div class="swipe">← Glissez pour changer de menu →</div>
+</section>
+
+<section id="courses" class="view">
+  <div class="sectionhead">
+    <h1>🛒 Liste de courses</h1>
+    <p id="shoppingWeek">Semaine 1</p>
+  </div>
+  <div class="toolbar">
+    <button id="generateShopping" class="primary">Générer depuis les 7 menus</button>
+    <button id="resetChecks" class="secondary">Réinitialiser les coches</button>
+  </div>
+  <div id="shopping"></div>
+</section>
+
+<section id="favoris" class="view">
+  <div class="sectionhead"><h1>❤️ Mes favoris</h1><p>Vos repas préférés, mémorisés sur cet appareil</p></div>
+  <div id="favoritesList"></div>
+</section>
+
+<section id="suivi" class="view owner-view">
+  <div class="progressbox trackerbox">
+    <h2>📅 Suivi du programme</h2>
+    <p>Définissez le Jour 1. Les dates, jours écoulés et semaines passées sont calculés automatiquement.</p>
+    <label class="startdate-label">Date de démarrage
+      <input id="programStartDate" type="date">
+    </label>
+    <button id="saveStartDate" class="primary">Enregistrer la date de départ</button>
+    <button id="goToday" class="secondary">Aller au jour actuel</button>
+    <small id="startDateStatus"></small>
+  </div>
+
+  <div class="progressbox">
+    <h2>⚖️ Historique des résultats</h2>
+    <div class="resultgrid">
+      <label>Date<input id="resultDate" type="date"></label>
+      <label>Poids (kg)<input id="weightResult" type="number" step="0.1" placeholder="ex. 76.8"></label>
+      <label>Masse grasse (%)<input id="fatResult" type="number" step="0.1" placeholder="ex. 38"></label>
+    </div>
+    <button id="saveResult" class="primary">Ajouter cette mesure</button>
+    <small id="resultStatus"></small>
+    <canvas id="resultChart" width="440" height="190"></canvas>
+    <div id="resultSummary" class="summarybox"></div>
+    <div id="resultHistory"></div>
+  </div>
+
+  <div class="progressbox" id="cycleReview">
+    <h2>🏁 Bilan & cycle suivant</h2>
+    <p id="cycleMessage">Le bilan apparaîtra ici à la fin du programme.</p>
+    <button id="buildNextCycle" class="primary">Préparer les semaines 13 à 16</button>
+    <small>Le cycle suivant reprend les repas existants et vos favoris pour varier davantage, sans modifier automatiquement les quantités prescrites.</small>
+  </div>
+</section>
+
+<section id="conseils" class="view">
+  <div class="sectionhead"><h1>💡 Mes conseils</h1><p>Pour rester dans le cadre du programme</p></div>
+  <article class="advice"><img src="assets/food_vegetables.png"><div><b>Variez les légumes</b><p>Alternez gombo, aubergine, chou, concombre, tomate, courgette, haricots verts et feuilles vertes.</p></div></article>
+  <article class="advice"><img src="assets/food_water.png"><div><b>Hydratez-vous</b><p>1 à 1,5 L d’eau par jour. Pas de sodas ni de jus de fruits.</p></div></article>
+  <article class="advice text"><div><b>🍽️ Déjeuner</b><p>Légumes d’abord, protéines maigres ensuite, puis la portion de féculents prévue.</p></div></article>
+  <article class="advice text"><div><b>🌙 Dîner</b><p>Privilégiez légumes et protéines maigres selon votre programme.</p></div></article>
+  <article class="advice text"><div><b>🔥 Cuisson</b><p>Privilégiez grill, four, vapeur, papillote ou wok léger.</p></div></article>
+</section>
+
+
+<div id="recipeModal" class="recipe-modal" aria-hidden="true">
+  <div class="recipe-backdrop" onclick="closeRecipe()"></div>
+  <article class="recipe-panel">
+    <button class="recipe-close" onclick="closeRecipe()" aria-label="Fermer">×</button>
+    <small id="recipeKind" class="recipe-kind"></small>
+    <h2 id="recipeTitle"></h2>
+    <p id="recipeMeta" class="recipe-meta"></p>
+    <h3>🧺 Ingrédients</h3>
+    <ul id="recipeIngredients"></ul>
+    <h3>👩‍🍳 Préparation</h3>
+    <ol id="recipeSteps"></ol><div id="recipeTipsBlock"><h3>💡 Conseils</h3><ul id="recipeTips"></ul></div>
+  </article>
+</div>
+
+<section id="weekPrintSheet" class="week-print-sheet" aria-hidden="true"></section>
+
+<nav class="bottom">
+  <button data-view="menus" class="on">🏠<span>Menu</span></button>
+  <button data-view="courses">🛒<span>Courses</span></button>
+  <button data-view="favoris">❤️<span>Favoris</span></button>
+  <button data-view="suivi" class="owner-only-nav">📈<span>Suivi</span></button>
+  <button data-view="conseils">💡<span>Conseils</span></button>
+</nav>
+</main>
+<script src="app.js?v=5.6"></script>
+</body></html>
